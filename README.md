@@ -1,8 +1,8 @@
 # FieldForYou
 
-Descriere Proiect
-Acesta va avea 2 actori: administratorul și clientul.
-Adminul va putea:
+#Descriere Proiect
+#Acesta va avea 2 actori: administratorul și clientul.
+#Adminul va putea:
 	-Adauga noi terenuri de sport 
 	-Aduce modificari la atributele unui teren sau chiar la eliminarea terenurilor
 	-Vizualizarea unei evidențe a tuturor programarilor
