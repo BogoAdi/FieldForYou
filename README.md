@@ -4,10 +4,10 @@ Descriere Proiect
 Acesta va avea 2 actori: administratorul și clientul.
 
 Adminul va putea:
--Adauga noi terenuri de sport 
--Aduce modificari la atributele unui teren sau chiar la eliminarea terenurilor
--Vizualizarea unei evidențe a tuturor programarilor
--Optional: Adminul va putea specifica unui teren anumite perioade in care nu se vor putea realiza programari.
+-	Adauga noi terenuri de sport 
+-	Aduce modificari la atributele unui teren sau chiar la eliminarea terenurilor
+-	Vizualizarea unei evidențe a tuturor programarilor
+-	Optional: Adminul va putea specifica unui teren anumite perioade in care nu se vor putea realiza programari.
 	
 Clientul va putea:
 -Realiza o programare, selectand un teren dintr-o lista  de terenuri de sport, o data , un interval orar si completand informatiile de contact
@@ -19,6 +19,7 @@ Enitatile esentiale sunt: User, SportField, Programare. Acestea vor implementa (
 User-ul va avea atribute: 
 -username
 -password
+
 SportField va avea:
 -idField
 -Category
