@@ -34,5 +34,5 @@ Programare va avea:
 	-numeClient
 	-numarTelefon
 	-DataRealizariiProgramarii
-	-idField
+	-idField.
 
