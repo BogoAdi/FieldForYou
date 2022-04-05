@@ -7,6 +7,7 @@ namespace SportFieldScheduler
     public class Program
     {
 
+        /*
         static UserRepository r1=new UserRepository();
         static SportFieldRepository r2=new SportFieldRepository();
         static AppointmentRepository r3=new AppointmentRepository();
@@ -157,6 +158,7 @@ namespace SportFieldScheduler
             }
            
         }
+        */
 
     }
 }

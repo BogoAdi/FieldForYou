@@ -1,9 +1,9 @@
-﻿using SportFieldScheduler.Domain;
-using SportFieldScheduler.Interfaces;
+﻿using Domain;
+using Domain.RepositoryPattern;
 
-namespace SportFieldScheduler.Repositories
+namespace Infrastructure.DataAccess
 {
-    internal class UserRepository : IUserRepository
+    public class UserRepository : IUserRepository
     {
         private List<User> users = new List<User>();
 
@@ -37,10 +37,5 @@ namespace SportFieldScheduler.Repositories
                 Console.WriteLine(user.Name);
             }
         }
-
-    //   public void UpdateUser(User user)
-    //   {
-    //       throw new NotImplementedException();
-    //   }
     }
 }

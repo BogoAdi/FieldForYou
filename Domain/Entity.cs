@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SportFieldScheduler.Domain
+namespace Domain
 {
-    public class Entity
+    internal class Entity
     {
         public Guid Id { get; set; }
 

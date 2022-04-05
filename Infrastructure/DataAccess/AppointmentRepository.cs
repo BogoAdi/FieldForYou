@@ -1,17 +1,15 @@
-﻿using SportFieldScheduler.Domain;
-using SportFieldScheduler.Interfaces;
+﻿using Domain;
+using Domain.RepositoryPattern;
 
-namespace SportFieldScheduler.Repositories
+namespace Infrastructure.DataAccess
 {
-    internal class AppointmentRepository : IAppointmentRepository
+    public class AppointmentRepository : IAppointmentRepository
     {
         private List<Appointment> appointments = new List<Appointment>();
+
         public void AddAppointment(Appointment appointment)
         {
-           void AddAppointment(Appointment appointment)
-            {
-                appointments.Add(appointment);
-            }
+            appointments.Add(appointment);
         }
 
         public Appointment GetAppointment(Appointment appointment)
@@ -22,6 +20,7 @@ namespace SportFieldScheduler.Repositories
             return null;
         }
 
+
         public void RemoveAppointment(Appointment appointment)
         {
             appointments.Remove(appointment);
@@ -29,10 +28,10 @@ namespace SportFieldScheduler.Repositories
 
         public void ShowAll()
         {
-            foreach(Appointment appointment in appointments)
+            foreach (Appointment appointment in appointments)
             {
-                if(appointment != null)
-                    Console.WriteLine(appointment); 
+                if (appointment != null)
+                    Console.WriteLine(appointment);
             }
             Console.WriteLine();
         }

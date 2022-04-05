@@ -1,8 +1,6 @@
-﻿using SportFieldScheduler.Domain;
-
-namespace SportFieldScheduler.Interfaces
+﻿namespace Domain.RepositoryPattern
 {
-    internal interface IUserRepository
+    public interface IUserRepository
     {
         void AddUser(User user);
         void RemoveUser(User user);

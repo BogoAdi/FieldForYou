@@ -1,8 +1,8 @@
 ﻿
 
-namespace SportFieldScheduler.Domain
+namespace Domain
 {
-    public class User : Entity
+    internal class User : Entity
     {
         public string Name { get;  set; }
         public string Email { get; set; }

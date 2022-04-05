@@ -1,8 +1,6 @@
-﻿using SportFieldScheduler.Domain;
-
-namespace SportFieldScheduler.Interfaces
+﻿namespace Domain.RepositoryPattern
 {
-    internal interface ISportField
+    public interface ISportFieldRepository
     {
         void AddSportField(SportField sportField);
         void ShowAll();

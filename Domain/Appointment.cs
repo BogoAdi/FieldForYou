@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SportFieldScheduler.Domain
+namespace Domain
 {
-    public class Appointment : Entity
+    internal class Appointment : Entity
     {
         public Guid IdField { get; set; }
         public DateTime Date { get; set; }

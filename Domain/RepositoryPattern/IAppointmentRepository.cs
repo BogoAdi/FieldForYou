@@ -1,8 +1,6 @@
-﻿using SportFieldScheduler.Domain;
-
-namespace SportFieldScheduler.Interfaces
+﻿namespace Domain.RepositoryPattern
 {
-    internal interface IAppointmentRepository
+    public interface IAppointmentRepository
     {
         void AddAppointment(Appointment appointment);
         void RemoveAppointment(Appointment appointment);
