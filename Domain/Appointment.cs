@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    internal class Appointment : Entity
+    public class Appointment : Entity
     {
         public Guid IdField { get; set; }
         public DateTime Date { get; set; }
@@ -17,7 +17,7 @@ namespace Domain
        
         public override string ToString()
         {
-            return "The appointment with the ID: "+Id + "for the date: " + Date + " for " + Hours + " hours " + ClientName+ " FieldID "+IdField;
+            return "The appointment with the ID: " + Id + "for the date: " + Date + " for " + Hours + " hours " + ClientName + " FieldID "+ IdField;
         }
     }
 }

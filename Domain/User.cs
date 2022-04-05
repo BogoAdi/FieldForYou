@@ -1,14 +1,13 @@
-﻿
-
-namespace Domain
+﻿namespace Domain
 {
-    internal class User : Entity
+    public class User : Entity
     {
         public string Name { get;  set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public string Username { get; set; }
         public List<Appointment> Appointments { get;  }
+
        public User()
         {   
             Appointments = new List<Appointment> ();

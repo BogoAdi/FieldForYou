@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    internal class SportField : Entity
+    public class SportField : Entity
     {
         public string Name { get; set; }
         public string Address { get; set; }
@@ -15,15 +15,14 @@ namespace Domain
         public string Category { get; set; }
         public string? Description { get; set; }
         public List<Appointment> Appointments { get; set; }
+
         public SportField()
         {
-            Appointments= new List<Appointment>();
-        
+            Appointments = new List<Appointment>();
         }
         public override string ToString()
         {
             return Address + " " + City + " " + PricePerHour + " " + Category+ " "+Id;
         }
-
     }
 }
