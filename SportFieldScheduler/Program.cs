@@ -1,8 +1,4 @@
-﻿
-using SportFieldScheduler.Repositories;
-using SportFieldScheduler.Domain;
-
-namespace SportFieldScheduler
+﻿namespace Presentation
 {
     public class Program
     {
