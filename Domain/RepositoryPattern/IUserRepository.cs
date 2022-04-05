@@ -2,11 +2,9 @@
 {
     public interface IUserRepository
     {
-        void AddUser(User user);
-        void RemoveUser(User user);
-        void ShowAll();
-        User GetUser(string user);
-        void AddAppointment(Appointment appointment,User user);
-       
+        public Task AddUserAsync(User user, CancellationToken cancellationToken);
+        public Task RemoveUserAsync(User user, CancellationToken cancellationToken);
+        public Task<User> GetUserByIdAsync(Guid id, CancellationToken cancellationToken);
+        public Task<List<User>> GetAllUserAsync( CancellationToken cancellationToken);
     }
 }

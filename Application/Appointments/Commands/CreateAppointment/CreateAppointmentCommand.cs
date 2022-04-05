@@ -1,13 +1,16 @@
-﻿using System;
+﻿using Domain;
+using MediatR;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain
+namespace Application.Appointments.Commands.CreateAppointment
 {
-    public class Appointment : Entity
+    public class CreateAppointmentCommand : Entity, IRequest<Guid>
     {
+
         public Guid IdField { get; set; }
         public Guid IdUser { get; set; }
         public DateTime Date { get; set; }
@@ -15,10 +18,5 @@ namespace Domain
         public double TotalPrice { get; set; }
         public string ClientName { get; set; }
         public string PhoneNumber { get; set; }
-       
-        public override string ToString()
-        {
-            return "The appointment with the ID: " + Id + "for the date: " + Date + " for " + Hours + " hours " + ClientName + " FieldID "+ IdField;
-        }
     }
 }

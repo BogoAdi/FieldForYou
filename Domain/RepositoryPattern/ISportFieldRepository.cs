@@ -2,11 +2,11 @@
 {
     public interface ISportFieldRepository
     {
-        void AddSportField(SportField sportField);
-        void ShowAll();
-        void DeleteSportField(SportField sportField);
-        void ShowAllAppointments(SportField s1);
-        SportField GetSportField(string sportFieldName);
-        void AddAppointment(Appointment appointment,SportField sportField);
+        public Task AddSportFieldAsync(SportField sportField, CancellationToken cancellationToken);
+        public Task DeleteSportFieldAsync(SportField sportField, CancellationToken cancellationToken);
+
+        public Task<List<SportField>> GetAllSportFieldsAsync(CancellationToken cancellationToken);
+        public Task<SportField> GetSportFieldByIdAsync(Guid id, CancellationToken cancellationToken);
+       
     }
 }

@@ -7,33 +7,27 @@ namespace Infrastructure.DataAccess
     {
         private List<Appointment> appointments = new List<Appointment>();
 
-        public void AddAppointment(Appointment appointment)
+        public async Task AddAppointmentAsync(Appointment appointment, CancellationToken cancellationToken)
         {
             appointments.Add(appointment);
         }
 
-        public Appointment GetAppointment(Appointment appointment)
-        {
-            var found = appointments.Find(x => x.Id == appointment.Id);
-            if (found != null)
-                return found;
-            return null;
-        }
-
-
-        public void RemoveAppointment(Appointment appointment)
+        public async Task RemoveAppointmentAsync(Appointment appointment, CancellationToken cancellationToken)
         {
             appointments.Remove(appointment);
         }
 
-        public void ShowAll()
+        public async Task<List<Appointment>> GetAllAppointmentsAsync(CancellationToken cancellationToken)
         {
-            foreach (Appointment appointment in appointments)
-            {
-                if (appointment != null)
-                    Console.WriteLine(appointment);
-            }
-            Console.WriteLine();
+            return appointments;
         }
+
+        public async Task<Appointment> GetAppointmentByIdAsync(Appointment appointment, CancellationToken cancellationToken)
+        {
+            return appointments.SingleOrDefault(x => x.Id == appointment.Id);
+        }
+
+       
+
     }
 }

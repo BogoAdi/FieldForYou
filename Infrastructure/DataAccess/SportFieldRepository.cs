@@ -7,46 +7,25 @@ namespace Infrastructure.DataAccess
     {   
         private List<SportField> _fields = new List<SportField>();
 
-        public void AddAppointment(Appointment appointment, SportField sportField)
-        {
-           sportField.Appointments.Add(appointment);
-        }
 
-        public void AddSportField(SportField sportField)
+        public async Task AddSportFieldAsync(SportField sportField, CancellationToken cancellationToken)
         {
             _fields.Add(sportField);
         }
 
-        public void DeleteSportField(SportField sportField)
+        public async Task DeleteSportFieldAsync(SportField  sportField, CancellationToken cancellationToken)
         {
-           _fields.Remove(sportField);
+            _fields.Remove(sportField);
         }
 
-        public SportField GetSportField(string sportFieldName)
+        public async Task<List<SportField>> GetAllSportFieldsAsync(CancellationToken cancellationToken)
         {
-            var found = _fields.Find(field =>field.Name==sportFieldName);
-            if (found!=null)
-                return found;
-            return null;
+            return _fields;
         }
-
-        public void ShowAll()
+        
+        public async Task<SportField> GetSportFieldByIdAsync(Guid id, CancellationToken cancellationToken)
         {
-            foreach (var sportField in _fields)
-            {
-                Console.WriteLine(sportField.ToString());
-            }
-            Console.WriteLine();
-        }
-
-        public void ShowAllAppointments(SportField s1)
-        {
-            var allAppointments = _fields.Where(field => field.Name==s1.Name);
-            foreach (var appointment in allAppointments)
-            {
-                Console.WriteLine(appointment.ToString());
-            }
-            Console.WriteLine();
+            return _fields.FirstOrDefault(x => x.Id == id);
         }
     }
 }

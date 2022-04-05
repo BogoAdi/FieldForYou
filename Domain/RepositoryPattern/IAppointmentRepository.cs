@@ -2,9 +2,9 @@
 {
     public interface IAppointmentRepository
     {
-        void AddAppointment(Appointment appointment);
-        void RemoveAppointment(Appointment appointment);
-        void ShowAll();
-        Appointment GetAppointment(Appointment appointment);
+        public Task AddAppointmentAsync(Appointment appointment, CancellationToken cancellationToken);
+        public Task RemoveAppointmentAsync(Appointment appointment, CancellationToken cancellationToken);
+        public Task<List<Appointment>> GetAllAppointmentsAsync(CancellationToken cancellationToken);
+        public Task<Appointment> GetAppointmentByIdAsync(Appointment appointment, CancellationToken cancellationToken);
     }
 }

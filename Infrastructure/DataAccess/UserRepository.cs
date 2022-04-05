@@ -7,35 +7,26 @@ namespace Infrastructure.DataAccess
     {
         private List<User> users = new List<User>();
 
-        public void AddAppointment(Appointment appointment, User user)
+        public async Task AddUserAsync(User user, CancellationToken cancellationToken)
         {
-            user.Appointments.Add(appointment);
-        }
-
-        public void AddUser(User user)
-        {
-
             users.Add(user);
         }
 
-        public User GetUser(string name)
-        {
-            var found = users.Find(x =>x.Username == name);
-            if (found != null) return found;
-            return null;
-        }
-
-        public void RemoveUser(User user)
+        public async Task RemoveUserAsync(User user, CancellationToken cancellationToken)
         {
             users.Remove(user);
         }
 
-        public void ShowAll()
+        public async Task<List<User>> GetAllUserAsync(CancellationToken cancellationToken)
         {
-            foreach (var user in users)
-            {
-                Console.WriteLine(user.Name);
-            }
+            return users;
         }
+
+        public async Task<User> GetUserByIdAsync(Guid id, CancellationToken cancellationToken)
+        {
+            return users.FirstOrDefault(x => x.Id == id);
+        }
+
+       
     }
 }
