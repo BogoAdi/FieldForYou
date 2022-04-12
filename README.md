@@ -28,4 +28,4 @@ Enitatile esentiale sunt: User, SportField, Programare. Acestea vor implementa (
 -	Datele vor fi persistate intr-o baza de date relationala, Microsoft SQL Server
 -	Frontend-ul va fi scris in React si Material UI
 -	Backend-ul va fi scris in C# si .Net
--	ORM: Entity Frameworkw Core
+-	ORM: Entity Framework Core
