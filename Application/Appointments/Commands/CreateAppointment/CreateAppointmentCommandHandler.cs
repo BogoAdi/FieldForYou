@@ -23,10 +23,8 @@ namespace Application.Appointments.Commands.CreateAppointment
                 var appointment = new Appointment
                 {
                     Id = command.Id,
-                    IdField = command.IdField,
-                    IdUser = command.IdUser,
-                    ClientName = command.ClientName,
-                    PhoneNumber = command.PhoneNumber,
+                    SportFieldId = command.SportFieldId,
+                    UserId = command.UserId,
                     Date = command.Date,
                     Hours = command.Hours,
                     TotalPrice = command.TotalPrice

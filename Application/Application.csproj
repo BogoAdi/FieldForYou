@@ -7,19 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="SportFields\**" />
+    <Compile Remove="Users\**" />
+    <EmbeddedResource Remove="SportFields\**" />
+    <EmbeddedResource Remove="Users\**" />
+    <None Remove="SportFields\**" />
+    <None Remove="Users\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MediatR" Version="10.0.1" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="SportFields\Commands\" />
-    <Folder Include="SportFields\Queries\" />
-    <Folder Include="Users\Commands\" />
-    <Folder Include="Users\Queries\" />
   </ItemGroup>
 
 </Project>

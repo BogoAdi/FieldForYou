@@ -11,12 +11,10 @@ namespace Application.Appointments.Commands.CreateAppointment
     public class CreateAppointmentCommand : Entity, IRequest<Guid>
     {
 
-        public Guid IdField { get; set; }
-        public Guid IdUser { get; set; }
+        public Guid SportFieldId { get; set; }
+        public Guid UserId { get; set; }
         public DateTime Date { get; set; }
         public int Hours { get; set; }
         public double TotalPrice { get; set; }
-        public string ClientName { get; set; }
-        public string PhoneNumber { get; set; }
     }
 }
