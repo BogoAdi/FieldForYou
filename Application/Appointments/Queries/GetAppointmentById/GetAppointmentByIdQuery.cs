@@ -10,6 +10,6 @@ namespace Application.Appointments.Queries.GetAppointmentById
 {
     public class GetAppointmentByIdQuery : IRequest<Appointment>
     {
-        public Appointment Appointment { get; set; }
+        public Guid Id { get; set; }
     }
 }

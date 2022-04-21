@@ -1,5 +1,5 @@
 ﻿using Domain;
-using Domain.RepositoryPattern;
+using Domain.Interfaces;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.Appointments.Commands.CreateAppointment
 {
-        public class CreateAppointmentCommandHandler : Entity , IRequestHandler<CreateAppointmentCommand, Guid>
+        public class CreateAppointmentCommandHandler : IRequestHandler<CreateAppointmentCommand, Appointment>
         {
             private IAppointmentRepository _repository;
 
@@ -18,7 +18,7 @@ namespace Application.Appointments.Commands.CreateAppointment
                 _repository = repository;
             }
 
-            public async Task<Guid> Handle(CreateAppointmentCommand command, CancellationToken cancellationToken)
+            public async Task<Appointment> Handle(CreateAppointmentCommand command, CancellationToken cancellationToken)
             {
                 var appointment = new Appointment
                 {
@@ -27,10 +27,12 @@ namespace Application.Appointments.Commands.CreateAppointment
                     UserId = command.UserId,
                     Date = command.Date,
                     Hours = command.Hours,
-                    TotalPrice = command.TotalPrice
+                    TotalPrice = command.TotalPrice,
+                    SportField = command.SportField,
+                    User = command.User
                 };
                 _repository.AddAppointmentAsync(appointment, cancellationToken);
-                return await Task.FromResult(appointment.Id);
+                return await Task.FromResult(appointment);
             }
         }
 }

@@ -1,4 +1,5 @@
-﻿using Domain.RepositoryPattern;
+﻿using Domain;
+using Domain.Interfaces;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.Appointments.Commands.DeleteAppointment
 {
-    public class DeleteAppointmentCommandHandler : IRequestHandler<DeleteAppointmentCommand, Guid>
+    public class DeleteAppointmentCommandHandler : IRequestHandler<DeleteAppointmentCommand, Appointment>
     {
         private IAppointmentRepository _repository;
 
@@ -17,11 +18,11 @@ namespace Application.Appointments.Commands.DeleteAppointment
             _repository = repository;
         }
 
-        public async Task<Guid> Handle(DeleteAppointmentCommand command, CancellationToken cancellationToken)
+        public async Task<Appointment> Handle(DeleteAppointmentCommand command, CancellationToken cancellationToken)
         {
-            _repository.RemoveAppointmentAsync(command.Appointment, cancellationToken);
+            var deleted = await _repository.RemoveAppointmentAsync(command.Id, cancellationToken);
 
-            return await Task.FromResult(command.Appointment.Id);
+            return await Task.FromResult(deleted);
         }
     }
 }

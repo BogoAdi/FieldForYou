@@ -6,10 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Appointments.Commands.DeleteAppointment
+namespace Application.Appointments.Queries.GetAllAppointments
 {
-    public class DeleteAppointmentCommand : IRequest<Appointment>
+    public class GetAllAppointmentsQuery : IRequest<List<Appointment>>
     {
-        public Guid Id { get; set; }
     }
 }

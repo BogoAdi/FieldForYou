@@ -1,4 +1,4 @@
-﻿namespace Domain.RepositoryPattern
+﻿namespace Domain.Interfaces
 {
     public interface ISportFieldRepository
     {

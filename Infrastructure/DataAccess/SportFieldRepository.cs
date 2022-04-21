@@ -1,5 +1,5 @@
 ﻿using Domain;
-using Domain.RepositoryPattern;
+using Domain.Interfaces;
 
 namespace Infrastructure.DataAccess
 {

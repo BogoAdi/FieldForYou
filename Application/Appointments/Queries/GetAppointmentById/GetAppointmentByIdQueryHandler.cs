@@ -1,5 +1,5 @@
 ﻿using Domain;
-using Domain.RepositoryPattern;
+using Domain.Interfaces;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -20,7 +20,7 @@ namespace Application.Appointments.Queries.GetAppointmentById
 
         public async Task<Appointment> Handle(GetAppointmentByIdQuery query, CancellationToken cancellationToken)
         {
-            var appointment = _repository.GetAppointmentByIdAsync(query.Appointment, cancellationToken);
+            var appointment = _repository.GetAppointmentByIdAsync(query.Id, cancellationToken);
 
             return await appointment;
         }
