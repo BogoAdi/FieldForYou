@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -7,11 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="SportFields\**" />
     <Compile Remove="Users\**" />
-    <EmbeddedResource Remove="SportFields\**" />
     <EmbeddedResource Remove="Users\**" />
-    <None Remove="SportFields\**" />
     <None Remove="Users\**" />
   </ItemGroup>
 

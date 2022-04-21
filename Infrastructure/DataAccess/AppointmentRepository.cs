@@ -7,7 +7,6 @@ namespace Infrastructure.DataAccess
 {
     public class AppointmentRepository : IAppointmentRepository
     {
-        private List<Appointment> appointments = new List<Appointment>();
         private readonly FieldForYouContext _context;
 
         public AppointmentRepository(FieldForYouContext context)
