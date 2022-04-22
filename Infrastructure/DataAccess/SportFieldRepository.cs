@@ -43,5 +43,21 @@ namespace Infrastructure.DataAccess
             if (found == null) { return null; }
             return found;
         }
+
+        public async Task<SportField> UpdateSpotFieldASync(Guid id, SportField sportField, CancellationToken cancellationToken)
+        {
+            var found = await _context.SportFields.FirstOrDefaultAsync(x => x.Id == id);
+            if (found == null) { return null; }
+            
+            found.Address = sportField.Address;
+            found.City = sportField.City;
+            found.Category = sportField.Category;
+            found.PricePerHour = sportField.PricePerHour;
+            found.Description = sportField.Description;
+
+            await _context.SaveChangesAsync();
+
+            return found;
+        }
     }
 }

@@ -7,6 +7,7 @@
 
         public Task<List<SportField>> GetAllSportFieldsAsync(CancellationToken cancellationToken);
         public Task<SportField> GetSportFieldByIdAsync(Guid id, CancellationToken cancellationToken);
+        public Task<SportField> UpdateSpotFieldASync(Guid id, SportField sportField, CancellationToken cancellationToken);
        
     }
 }
