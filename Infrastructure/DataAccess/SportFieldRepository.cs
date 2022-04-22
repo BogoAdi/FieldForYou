@@ -7,7 +7,6 @@ namespace Infrastructure.DataAccess
 {
     public class SportFieldRepository : ISportFieldRepository
     {   
-        private List<SportField> _fields = new List<SportField>();
         private readonly FieldForYouContext _context;
 
         public SportFieldRepository(FieldForYouContext context)

@@ -1,32 +1,64 @@
 ﻿using Domain;
 using Domain.Interfaces;
+using Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.DataAccess
 {
     public class UserRepository : IUserRepository
     {
         private List<User> users = new List<User>();
+        private readonly FieldForYouContext _context;
 
-        public async Task AddUserAsync(User user, CancellationToken cancellationToken)
+        public UserRepository(FieldForYouContext context)
         {
-            users.Add(user);
+            _context = context;
         }
 
-        public async Task RemoveUserAsync(User user, CancellationToken cancellationToken)
+        public async Task<User> AddUserAsync(User user, CancellationToken cancellationToken)
         {
-            users.Remove(user);
+            await _context.Users.AddAsync(user);
+            await _context.SaveChangesAsync();
+            return user;
+        }
+
+        public async Task<User> RemoveUserAsync(Guid id, CancellationToken cancellationToken)
+        {
+            var userToBeDeleted = await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
+            if (userToBeDeleted == null) { return null; }
+
+            _context.Users.Remove(userToBeDeleted);
+            await _context.SaveChangesAsync();
+
+            return userToBeDeleted;
         }
 
         public async Task<List<User>> GetAllUserAsync(CancellationToken cancellationToken)
         {
-            return users;
+            return await _context.Users.ToListAsync();
         }
 
         public async Task<User> GetUserByIdAsync(Guid id, CancellationToken cancellationToken)
         {
-            return users.FirstOrDefault(x => x.Id == id);
+            var found = await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
+            if (found == null) { return null; }
+            return found;
         }
 
-       
+        public async Task<User> UpdateUserASync(Guid id, User user, CancellationToken cancellationToken)
+        {
+            var found = await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
+            if (found == null) { return null; }
+
+            found.Username = user.Username;
+            found.Password = user.Password;
+            found.Email = user.Email;
+            found.PhoneNumber = user.PhoneNumber;
+            found.Name = user.Name;
+
+            await _context.SaveChangesAsync();
+
+            return found;
+        }
     }
 }
