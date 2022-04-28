@@ -5,11 +5,13 @@ VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Presentation", "SportFieldScheduler\Presentation.csproj", "{93ED15B3-C50A-4CC5-986E-433D2B9C94F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{44613C81-AEA4-4B96-A216-4E7EAA847F2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{44613C81-AEA4-4B96-A216-4E7EAA847F2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{1C7A67BE-F612-4C05-9103-5FB579D55A4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{1C7A67BE-F612-4C05-9103-5FB579D55A4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{8EA7542D-BB54-4F19-8D24-13D344559C56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{8EA7542D-BB54-4F19-8D24-13D344559C56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FieldForYou.Api", "FieldForYou.Api\FieldForYou.Api.csproj", "{C7939569-5331-4D09-8195-DDE6C4065D5B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{8EA7542D-BB54-4F19-8D24-13D344559C56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EA7542D-BB54-4F19-8D24-13D344559C56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EA7542D-BB54-4F19-8D24-13D344559C56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7939569-5331-4D09-8195-DDE6C4065D5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7939569-5331-4D09-8195-DDE6C4065D5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7939569-5331-4D09-8195-DDE6C4065D5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7939569-5331-4D09-8195-DDE6C4065D5B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
