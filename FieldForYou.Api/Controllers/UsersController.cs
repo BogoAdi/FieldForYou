@@ -1,4 +1,7 @@
 ﻿using Application.Users.Commands.CreateUser;
+using Application.Users.Commands.DeleteUser;
+using Application.Users.Commands.UpdateUser;
+using Application.Users.Queries.GetAllUsers;
 using Application.Users.Queries.GetUserByIdQuery;
 using AutoMapper;
 using Domain;
@@ -45,6 +48,46 @@ namespace FieldForYou.Api.Controllers
             var mappedResult = _mapper.Map<User, UserGetDto>(result);
             return Ok(mappedResult);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            var query = new GetAllUsersQuery();
+            var users = await _mediator.Send(query);
+
+            var mappedUsers = _mapper.Map<List<UserGetDto>>(users);
+            return Ok(mappedUsers);
+        }
+
+        [HttpPatch("{userId}")]
+        public async Task<IActionResult> UpdateUser(Guid userId, UserPutPostDto user)
+        {
+            var updateUser = new UpdateUserCommand
+            {
+                Email = user.Email,
+                Name = user.Name,
+                Password = user.Password,
+                Username = user.Username,
+                PhoneNumber = user.PhoneNumber,
+                Role = user.Role,
+                Id = userId
+            };
+            var x = await _mediator.Send(updateUser);
+            return NoContent();
+        }
+
+        [HttpDelete("{userId}")]
+        public async Task<IActionResult> DeleteUser(Guid userId)
+        {
+            var deleteUser = new DeleteUserCommand
+            {
+                Id = userId
+            };
+            await _mediator.Send(deleteUser);
+            return NoContent();
+        }
+
+
     }
         
 }

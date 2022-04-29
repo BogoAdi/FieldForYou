@@ -18,5 +18,6 @@ namespace Application.Appointments.Commands.CreateAppointment
         public double TotalPrice { get; set; }
         public User User { get; set; }
         public SportField SportField { get; set; }
+        public string Img { get; set; }
     }
 }

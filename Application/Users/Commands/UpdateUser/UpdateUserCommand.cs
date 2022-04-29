@@ -16,7 +16,7 @@ namespace Application.Users.Commands.UpdateUser
         public string Password { get; set; }
         public string Username { get; set; }
         public string PhoneNumber { get; set; }
-        public List<Appointment> Appointments { get; set; } = new List<Appointment>();
+        public List<Appointment> Appointments { get; set; }
         public Role Role { get; set; }
     }
 }

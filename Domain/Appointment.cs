@@ -15,6 +15,7 @@ namespace Domain
         public double TotalPrice { get; set; }
         public User User { get; set; }
         public SportField SportField { get; set; }  
+        public string Img { get; set; }
         
        
         public override string ToString()
