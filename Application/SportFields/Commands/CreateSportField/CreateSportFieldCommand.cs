@@ -17,6 +17,7 @@ namespace Application.SportFields.Commands.CreateSportField
         public double PricePerHour { get; set; }
         public SportFieldCategory Category { get; set; }
         public string? Description { get; set; }
+        public string Img { get; set; }
         public List<Appointment> Appointments { get; set; }
     }
 }

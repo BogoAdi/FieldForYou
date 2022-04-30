@@ -29,8 +29,9 @@ namespace Application.SportFields.Commands.CreateSportField
                 City = command.City,
                 Description = command.Description,
                 Name = command.Name,
-                PricePerHour = command.PricePerHour
-            };
+                PricePerHour = command.PricePerHour,
+                Img = command.Img
+    };
 
             var res = await _repository.AddSportFieldAsync(sportField, cancellationToken);
             return await Task.FromResult(res);

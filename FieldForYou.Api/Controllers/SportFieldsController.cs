@@ -1,4 +1,5 @@
-﻿using Application.SportFields.Commands.DeleteSportField;
+﻿using Application.SportFields.Commands.CreateSportField;
+using Application.SportFields.Commands.DeleteSportField;
 using Application.SportFields.Queries.GetAllSportFields;
 using Application.SportFields.Queries.GetSportFieldById;
 using AutoMapper;
@@ -24,6 +25,24 @@ namespace FieldForYou.Api.Controllers
             _mapper = mapper;
         }
 
+        [HttpPost]
+        public async Task<IActionResult> CreateSportField(SportFieldDto sportfield)
+        {
+
+            var sport_field = _mapper.Map<SportField>(sportfield);
+            var command = new CreateSportFieldCommand
+            {
+                Address = sport_field.Address,
+                Category = sport_field.Category,
+                City = sport_field.City,
+                Img = sport_field.Img,
+                PricePerHour = sport_field.PricePerHour,
+                Description = sport_field.Description,
+                Name = sport_field.Name
+            };
+            var resultSportField = await _mediator.Send(command);
+            return Created($"/api/[controller]/{resultSportField.Id}", null);
+        }
         [HttpGet]
         public async Task<IActionResult> GetAllSportFields()
         {

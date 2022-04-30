@@ -7,6 +7,5 @@
         public DateTime Date { get; set; }
         public int Hours { get; set; }
         public double TotalPrice { get; set; }
-        public string Img { get; set; }
     }
 }

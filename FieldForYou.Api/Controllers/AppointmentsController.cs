@@ -26,18 +26,17 @@ namespace FieldForYou.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateAppointment(AppointmentDto appintmentDto)
+        public async Task<IActionResult> CreateAppointment(AppointmentDto appointmentDto)
         {
-            var appointment = _mapper.Map<Appointment>(appintmentDto);
+            var appointment = _mapper.Map<Appointment>(appointmentDto);
 
             var command = new CreateAppointmentCommand
             {
-                SportFieldId = appointment.Id,
+                SportFieldId = appointment.SportFieldId,
                 UserId = appointment.UserId,
                 Date = appointment.Date,
                 Hours = appointment.Hours,
-                TotalPrice = appointment.TotalPrice,
-                Img = appointment.Img,
+                TotalPrice = appointment.TotalPrice
             };
             var resultAppointment = await _mediator.Send(command);
 

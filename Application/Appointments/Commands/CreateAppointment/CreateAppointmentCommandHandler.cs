@@ -29,8 +29,7 @@ namespace Application.Appointments.Commands.CreateAppointment
                     Hours = command.Hours,
                     TotalPrice = command.TotalPrice,
                     SportField = command.SportField,
-                    User = command.User,
-                    Img = command.Img,
+                    User = command.User
                 };
                 var res = await _repository.AddAppointmentAsync(appointment, cancellationToken);
                 return await Task.FromResult(res);

@@ -53,6 +53,7 @@ namespace Infrastructure.DataAccess
             found.Category = sportField.Category;
             found.PricePerHour = sportField.PricePerHour;
             found.Description = sportField.Description;
+            found.Img = sportField.Img;
 
             await _context.SaveChangesAsync();
 
