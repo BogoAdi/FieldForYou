@@ -13,13 +13,16 @@ namespace Application.Appointments.Commands.CreateAppointment
         public class CreateAppointmentCommandHandler : IRequestHandler<CreateAppointmentCommand, Appointment>
         {
             private IAppointmentRepository _repository;
-        public CreateAppointmentCommandHandler(IAppointmentRepository repository)
+            private ISportFieldRepository _sportFieldRepository;
+            public CreateAppointmentCommandHandler(IAppointmentRepository repository, ISportFieldRepository sportFieldRepository)
             {
-                _repository = repository;        }
+                _repository = repository;        
+                _sportFieldRepository = sportFieldRepository;
+            }
 
             public async Task<Appointment> Handle(CreateAppointmentCommand command, CancellationToken cancellationToken)
             {
-            //var sportfield = await _sportFieldRepository.GetSportFieldByIdAsync(command.SportFieldId,cancellationToken);
+            var sportfield = await _sportFieldRepository.GetSportFieldByIdAsync(command.SportFieldId,cancellationToken);
 
             var appointment = new Appointment
                 {
@@ -28,10 +31,10 @@ namespace Application.Appointments.Commands.CreateAppointment
                     UserId = command.UserId,
                     Date = command.Date,
                     Hours = command.Hours,
-                    TotalPrice = command.TotalPrice,
-                    //SportField = command.SportField,
-                   // User = command.User
-                };
+                    TotalPrice = sportfield.PricePerHour * command.Hours
+                //SportField = command.SportField,
+                // User = command.User
+            };
                 var res = await _repository.AddAppointmentAsync(appointment, cancellationToken);
                 return await Task.FromResult(res);
             }

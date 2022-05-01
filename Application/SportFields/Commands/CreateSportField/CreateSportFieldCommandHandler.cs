@@ -20,7 +20,7 @@ namespace Application.SportFields.Commands.CreateSportField
 
         public async Task<SportField> Handle(CreateSportFieldCommand command, CancellationToken cancellationToken)
         {
-            SportField sportField = new SportField
+            var sportField = new SportField
             {
                 Id = command.Id,
                 Address = command.Address,

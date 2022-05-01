@@ -29,6 +29,7 @@ namespace Application.SportFields.Commands.UpdateSportField
                 Name = command.Name,
                 Description = command.Description,
                 PricePerHour = command.PricePerHour,
+                Img = command.Img,
                 Appointments = command.Appointments
             };
 

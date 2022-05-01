@@ -16,9 +16,42 @@ namespace Infrastructure.DataAccess
 
         public async Task<Appointment> AddAppointmentAsync(Appointment appointment, CancellationToken cancellationToken)
         {
-            _context.Appointments.Add(appointment);
-            await _context.SaveChangesAsync();
-            return appointment;
+            //logic for allowing free dates
+            bool freeSlot = true;
+
+            foreach (Appointment appointment1 in _context.Appointments)
+            {
+                if (appointment.SportFieldId == appointment1.SportFieldId)
+                {
+                    if (appointment.Date >= appointment1.Date &&
+                        appointment1.Date.AddHours(Convert.ToDouble(appointment1.Hours))
+                        > appointment.Date)
+                    {
+                        freeSlot = false;
+                        break;
+                    }
+                    if (appointment.Date < appointment1.Date &&
+                       appointment.Date.AddHours(Convert.ToDouble(appointment1.Hours))
+                       > appointment1.Date)
+                    {
+                        freeSlot = false;
+                        break;
+                    }
+
+                }
+
+            }
+            // Console.WriteLine();
+            // Console.WriteLine(freeSlot);
+            // Console.WriteLine();
+            if (freeSlot)
+            {
+                var res = _context.Appointments.Add(appointment);
+                await _context.SaveChangesAsync();
+
+            }
+            var isAdded = await _context.Appointments.FirstOrDefaultAsync(x => x.Id == appointment.Id);
+            return isAdded;
         }
 
         public async Task<Appointment> RemoveAppointmentAsync(Guid id, CancellationToken cancellationToken)

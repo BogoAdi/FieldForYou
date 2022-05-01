@@ -80,8 +80,9 @@ namespace FieldForYou.Api.Controllers
               Description = sportFieldDto.Description,
               Name = sportFieldDto.Name,
               PricePerHour = sportFieldDto.PricePerHour,
-              Id = sportFiledId,
-              Img = sportFieldDto.Img
+              Img = sportFieldDto.Img,
+              Id = sportFiledId
+             
             };
             var x = await _mediator.Send(updateField);
             return NoContent();

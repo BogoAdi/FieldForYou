@@ -39,7 +39,10 @@ namespace FieldForYou.Api.Controllers
                 TotalPrice = appointment.TotalPrice
             };
             var resultAppointment = await _mediator.Send(command);
-
+            if(resultAppointment == null)
+            {
+                return BadRequest("Slot not free");
+            }
             return Created($"/api/[controller]/{resultAppointment.Id}", null);
         }
 
