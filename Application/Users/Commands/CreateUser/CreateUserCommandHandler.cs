@@ -22,14 +22,14 @@ namespace Application.Users.Commands.CreateUser
         {
             var user = new User
             {
-                Id = command.Id,
-                Appointments = command.Appointments,
+                Id = Guid.NewGuid(),
                 Email = command.Email,
                 Name = command.Name,
                 Password = command.Password,
                 PhoneNumber = command.PhoneNumber,
                 Role = command.Role,
-                Username = command.Username
+                Username = command.Username,
+                Appointments = command.Appointments
             };
             var res = await _repository.AddUserAsync(user, cancellationToken);
             return await Task.FromResult(user);

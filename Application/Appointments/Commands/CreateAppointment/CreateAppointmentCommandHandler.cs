@@ -1,5 +1,6 @@
 ﻿using Domain;
 using Domain.Interfaces;
+using Infrastructure.DataAccess;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -12,15 +13,15 @@ namespace Application.Appointments.Commands.CreateAppointment
         public class CreateAppointmentCommandHandler : IRequestHandler<CreateAppointmentCommand, Appointment>
         {
             private IAppointmentRepository _repository;
-
-            public CreateAppointmentCommandHandler(IAppointmentRepository repository)
+        public CreateAppointmentCommandHandler(IAppointmentRepository repository)
             {
-                _repository = repository;
-            }
+                _repository = repository;        }
 
             public async Task<Appointment> Handle(CreateAppointmentCommand command, CancellationToken cancellationToken)
             {
-                var appointment = new Appointment
+            //var sportfield = await _sportFieldRepository.GetSportFieldByIdAsync(command.SportFieldId,cancellationToken);
+
+            var appointment = new Appointment
                 {
                     Id = command.Id,
                     SportFieldId = command.SportFieldId,
@@ -28,8 +29,8 @@ namespace Application.Appointments.Commands.CreateAppointment
                     Date = command.Date,
                     Hours = command.Hours,
                     TotalPrice = command.TotalPrice,
-                    SportField = command.SportField,
-                    User = command.User
+                    //SportField = command.SportField,
+                   // User = command.User
                 };
                 var res = await _repository.AddAppointmentAsync(appointment, cancellationToken);
                 return await Task.FromResult(res);

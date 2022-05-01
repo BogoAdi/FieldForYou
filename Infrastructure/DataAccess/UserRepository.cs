@@ -35,12 +35,12 @@ namespace Infrastructure.DataAccess
 
         public async Task<List<User>> GetAllUserAsync(CancellationToken cancellationToken)
         {
-            return await _context.Users.ToListAsync();
+            return await _context.Users.Include(x => x.Appointments).ToListAsync();
         }
 
         public async Task<User> GetUserByIdAsync(Guid id, CancellationToken cancellationToken)
         {
-            var found = await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
+            var found = await _context.Users.Include(x => x.Appointments).FirstOrDefaultAsync(x => x.Id == id);
             if (found == null) { return null; }
             return found;
         }

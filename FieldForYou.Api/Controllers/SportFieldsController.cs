@@ -1,5 +1,6 @@
 ﻿using Application.SportFields.Commands.CreateSportField;
 using Application.SportFields.Commands.DeleteSportField;
+using Application.SportFields.Commands.UpdateSportField;
 using Application.SportFields.Queries.GetAllSportFields;
 using Application.SportFields.Queries.GetSportFieldById;
 using AutoMapper;
@@ -67,6 +68,25 @@ namespace FieldForYou.Api.Controllers
             await _mediator.Send(new DeleteSportFieldCommand { Id = sportFieldId });
             return NoContent();
         }
+
+        [HttpPatch("{sportFiledId}")]
+        public async Task<IActionResult> UpdateSportField(Guid sportFiledId, SportFieldDto sportFieldDto)
+        {
+            var updateField = new UpdateSportFieldCommand
+            {
+              Category = sportFieldDto.Category,
+              Address = sportFieldDto.Address,
+              City = sportFieldDto.City,
+              Description = sportFieldDto.Description,
+              Name = sportFieldDto.Name,
+              PricePerHour = sportFieldDto.PricePerHour,
+              Id = sportFiledId,
+              Img = sportFieldDto.Img
+            };
+            var x = await _mediator.Send(updateField);
+            return NoContent();
+        }
+
 
     }
 }

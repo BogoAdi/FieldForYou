@@ -52,11 +52,9 @@ namespace FieldForYou.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllUsers()
         {
-            var query = new GetAllUsersQuery();
-            var users = await _mediator.Send(query);
-
-            var mappedUsers = _mapper.Map<List<UserGetDto>>(users);
-            return Ok(mappedUsers);
+            var result = await _mediator.Send(new GetAllUsersQuery());
+            var mappedResult = _mapper.Map<List<UserGetDto>>(result);
+            return Ok(mappedResult);
         }
 
         [HttpPatch("{userId}")]
