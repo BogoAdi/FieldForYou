@@ -1,6 +1,8 @@
 
 import { useEffect, useState } from "react";
 import * as React from 'react';
+import ItemCard from './ItemCard';
+
 export default function SportFiles({ products}){
 const [productes, setProducts] = useState(
     [
@@ -11,7 +13,8 @@ const [productes, setProducts] = useState(
     
    return (
         <div>
-            
+            <h1> SportFields</h1>
+            <ItemCard sportField={productes}/>
         </div>
         
     );
