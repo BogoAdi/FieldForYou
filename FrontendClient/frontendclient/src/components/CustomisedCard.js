@@ -44,7 +44,7 @@ export default function ImgMediaCard(props) {
   
         </CardContent>
         <CardActions>
-          <Link to={`/select-date/${props.id}`}>
+            <Link to={`/select-date/${props.id}`}>
             <Button size="small">Create an appointment</Button>
           </Link>
           <Button size="small">Learn More</Button>
