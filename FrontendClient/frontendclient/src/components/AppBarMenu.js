@@ -29,7 +29,7 @@ const AppBarMenu = () => {
     }
     const navAdminUsers = () => {
         handleCloseNavMenu();
-        //navigate('/show-all-users');
+        navigate('/show-all-users');
     }
     const navAllSportFields = () => {
         handleCloseNavMenu();
