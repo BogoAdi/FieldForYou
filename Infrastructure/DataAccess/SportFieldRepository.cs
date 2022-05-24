@@ -33,7 +33,7 @@ namespace Infrastructure.DataAccess
 
         public async Task<List<SportField>> GetAllSportFieldsAsync(CancellationToken cancellationToken)
         {
-            return await _context.SportFields.ToListAsync();
+            return await _context.SportFields.Include(x => x.Appointments).ToListAsync();
         }
         
         public async Task<SportField> GetSportFieldByIdAsync(Guid id, CancellationToken cancellationToken)

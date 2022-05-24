@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Text.Json.Serialization;
 namespace Domain
 {
     public class Appointment : Entity
@@ -13,8 +14,10 @@ namespace Domain
         public DateTime Date { get; set; }
         public int Hours { get; set; }
         public double TotalPrice { get; set; }
-       // public User User { get; set; }
-        //public SportField SportField { get; set; }  
+        [JsonIgnore]
+        public User User { get; set; }
+        [JsonIgnore]
+        public SportField SportField { get; set; }  
         
         
        

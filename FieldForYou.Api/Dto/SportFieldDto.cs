@@ -11,5 +11,6 @@ namespace FieldForYou.Api.Dto
         public string? Description { get; set; }
         public string Img { get; set; }
         public SportFieldCategory Category { get; set; }
+        public List<Appointment> Appointments { get; set; }
     }
 }

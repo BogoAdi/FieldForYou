@@ -66,12 +66,18 @@ namespace Infrastructure.DataAccess
 
         public async Task<List<Appointment>> GetAllAppointmentsAsync(CancellationToken cancellationToken)
         {
-            return await _context.Appointments.ToListAsync();
+            return await _context.Appointments
+                .Include(x => x.User)
+                .Include(x => x.SportField)
+                .ToListAsync();
         }
 
         public async Task<Appointment> GetAppointmentByIdAsync(Guid id, CancellationToken cancellationToken)
         {
-            var found = await _context.Appointments.FirstOrDefaultAsync(x => x.Id == id);
+            var found = await _context.Appointments
+                .Include(x => x.User)
+                .Include(x => x.SportField)
+                .FirstOrDefaultAsync(x => x.Id == id);
             if(found == null) { return null; }
             return found;
         }

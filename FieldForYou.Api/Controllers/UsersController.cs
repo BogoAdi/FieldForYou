@@ -56,7 +56,6 @@ namespace FieldForYou.Api.Controllers
             var mappedResult = _mapper.Map<List<UserGetDto>>(result);
             return Ok(mappedResult);
         }
-
         [HttpPatch("{userId}")]
         public async Task<IActionResult> UpdateUser(Guid userId, UserPutPostDto user)
         {
