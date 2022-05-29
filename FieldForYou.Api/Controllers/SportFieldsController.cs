@@ -9,6 +9,7 @@ using FieldForYou.Api.Dto;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SportFieldScheduler.Application.Dto;
 
 namespace FieldForYou.Api.Controllers
 {
@@ -27,22 +28,13 @@ namespace FieldForYou.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateSportField(SportFieldDto sportfield)
+        public async Task<IActionResult> CreateSportField(SportFieldPostDto sportfield)
         {
 
-            var sport_field = _mapper.Map<SportField>(sportfield);
-            var command = new CreateSportFieldCommand
-            {
-                Address = sport_field.Address,
-                Category = sport_field.Category,
-                City = sport_field.City,
-                Img = sport_field.Img,
-                PricePerHour = sport_field.PricePerHour,
-                Description = sport_field.Description,
-                Name = sport_field.Name
-            };
-            var resultSportField = await _mediator.Send(command);
-            return Created($"/api/[controller]/{resultSportField.Id}", null);
+            var command = _mapper.Map<SportFieldPostDto, CreateSportFieldCommand>(sportfield);
+            var created = await _mediator.Send(command);
+            var dto = _mapper.Map<SportField, SportFieldDto>(created);
+            return CreatedAtAction(nameof(GetSportField), new { id = created.Id }, dto);
         }
         [HttpGet]
         public async Task<IActionResult> GetAllSportFields()
@@ -53,11 +45,11 @@ namespace FieldForYou.Api.Controllers
             return Ok(mappedsportFieldList);
         }
 
-        [HttpGet("{sportFieldId}")]
-        public async Task<IActionResult> GetSportField(Guid sportFieldId)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetSportField(Guid id)
         {
-            var sportField = await _mediator.Send(new GetSportFieldByIdQuery { Id = sportFieldId});
-            var mappedsportField = _mapper.Map<SportFieldDto>(sportField);
+            var sportField = await _mediator.Send(new GetSportFieldByIdQuery { Id = id});
+            var mappedsportField = _mapper.Map<SportField, SportFieldDto>(sportField);
 
             return Ok(mappedsportField);
         }

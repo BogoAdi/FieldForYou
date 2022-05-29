@@ -1,6 +1,8 @@
-﻿using AutoMapper;
+﻿using Application.SportFields.Commands.CreateSportField;
+using AutoMapper;
 using Domain;
 using FieldForYou.Api.Dto;
+using SportFieldScheduler.Application.Dto;
 
 namespace FieldForYou.Api.Profiles
 {
@@ -8,8 +10,8 @@ namespace FieldForYou.Api.Profiles
     {
         public SportFieldProfile()
         {
-            CreateMap<SportField, SportFieldDto>()
-                .ReverseMap();
+            CreateMap<SportFieldPostDto, CreateSportFieldCommand>();
+            CreateMap<SportField, SportFieldDto>();
         }
     }
 }
