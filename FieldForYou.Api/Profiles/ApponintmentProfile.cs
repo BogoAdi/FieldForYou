@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using Application.Appointments.Commands.CreateAppointment;
+using AutoMapper;
 using Domain;
 using FieldForYou.Api.Dto;
 
@@ -8,8 +9,8 @@ namespace FieldForYou.Api.Profiles
     {
         public ApponintmentProfile()
         {
-            CreateMap<Appointment, AppointmentDto>()
-                .ReverseMap();
+            CreateMap<AppointmentPostDto, CreateAppointmentCommand>();
+            CreateMap<Appointment, AppointmentDto>();
         }
     }
 }

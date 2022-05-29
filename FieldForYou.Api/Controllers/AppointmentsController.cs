@@ -26,24 +26,13 @@ namespace FieldForYou.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateAppointment(AppointmentDto appointmentDto)
+        public async Task<IActionResult> CreateAppointment(AppointmentPostDto appointment)
         {
-            var appointment = _mapper.Map<Appointment>(appointmentDto);
-
-            var command = new CreateAppointmentCommand
-            {
-                SportFieldId = appointment.SportFieldId,
-                UserId = appointment.UserId,
-                Date = appointment.Date,
-                Hours = appointment.Hours,
-                TotalPrice = appointment.TotalPrice
-            };
-            var resultAppointment = await _mediator.Send(command);
-            if(resultAppointment == null)
-            {
-                return BadRequest("Slot not free");
-            }
-            return Created($"/api/[controller]/{resultAppointment.Id}", null);
+            var command = _mapper.Map<AppointmentPostDto, CreateAppointmentCommand>(appointment);
+            var created = await _mediator.Send(command);
+            if (created == null) return BadRequest("Slot is not free ");
+            var dto = _mapper.Map<Appointment, AppointmentDto>(created);
+            return CreatedAtAction(nameof(GetAppointment), new { id = created.Id }, dto);
         }
 
         [HttpGet]
@@ -55,10 +44,10 @@ namespace FieldForYou.Api.Controllers
             return Ok(mappedAppointments);
         }
 
-        [HttpGet("{appointmentId}")]
-        public async Task<IActionResult> GetAppointment(Guid appointmentId)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetAppointment(Guid id)
         {
-            var appointment = await _mediator.Send(new GetAppointmentByIdQuery { Id = appointmentId });
+            var appointment = await _mediator.Send(new GetAppointmentByIdQuery { Id = id });
             var mappedAppointment = _mapper.Map<AppointmentDto>(appointment);
 
             return Ok(mappedAppointment);
